@@ -30,8 +30,6 @@
     <h4><a href = "newReg.php"> New Registration</a></h4>
     <table id="example">
 
-
-
         <thead>
             <th style="display: none;">Id</th>
             <th>Submit</th>
@@ -63,142 +61,55 @@
                         echo "<td><input style='width:70px;' type='text' name='comment' value='".$row['comment']."' ></td>";
                         echo "<td>" . $row['batch'] . "</td>";
                         echo "<td>" . $row['department'] . "</td>";
-                        if($login_session=="regdesk")
-                        {
-                            if($row['paymentStatus']==1)
-                            {
-                                echo "<td><input style='width:70px;' type='number' name='Amount-of-Payment' value=".$row['amountPaid']." disabled><br>";
-                            }
-                            else
-                            {
-                                echo "<td><input style='width:70px;' type='number' name='Amount-of-Payment' value=".$row['amountPaid']."><br>";
-                            }
-                        }
-                        else
-                        {
-                            echo "<td><input style='width:70px;' type='number' name='Amount-of-Payment' value=".$row['amountPaid']." disabled><br>";
-                        }
+                            echo "<td><input style='width:70px;' type='number' name='Amount-of-Payment' value=".$row['amountPaid']." ><br>";
 
                         echo "<td><input style='width:70px;' type='number' name='accompany' value=".$row['accompaniments']." ></td>";
-
-                        if($login_session=="regdesk")
-                        {
-                            if($row['paymentStatus']==1 && $row['checkedIn']==1 && $row['regdesk_status']==1)
+                        echo"<td>";
+                        if($row['paymentStatus']=='1')
                             {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 checked> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 checked> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 checked disabled> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==1 && $row['checkedIn']==1 && $row['regdesk_status']==0)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 checked> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 checked disabled> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==0 && $row['checkedIn']==1 && $row['regdesk_status']==1)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 > payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 checked> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 checked disabled> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==0 && $row['checkedIn']==1 && $row['regdesk_status']==0)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 > payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 checked disabled> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==1 && $row['checkedIn']==0 && $row['regdesk_status']==1)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 checked> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 checked> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 disabled> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==1 && $row['checkedIn']==0 && $row['regdesk_status']==0)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 checked> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 disabled> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==0 && $row['checkedIn']==0 && $row['regdesk_status']==1)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 > payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 checked> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 disabled> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==0 && $row['checkedIn']==0 && $row['regdesk_status']==0)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 > payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 disabled> Acco-Status</td>";
-                            }
-                        }
+                                echo "<input type='checkbox' name='payment-status' value=1 checked> payment-status<br>";
+                            } 
                         else
                         {
-                            if($row['paymentStatus']==1 && $row['checkedIn']==1 && $row['regdesk_status']==1)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 checked disabled> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 checked disabled> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 checked> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==1 && $row['checkedIn']==1 && $row['regdesk_status']==0)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 checked disabled> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 disabled> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 checked> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==0 && $row['checkedIn']==1 && $row['regdesk_status']==1)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 disabled> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 checked disabled> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 checked> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==0 && $row['checkedIn']==1 && $row['regdesk_status']==0)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 disabled> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 disabled> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 checked> Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==1 && $row['checkedIn']==0 && $row['regdesk_status']==1)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 checked disabled> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 checked disabled> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 > Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==1 && $row['checkedIn']==0 && $row['regdesk_status']==0)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 checked disabled> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 disabled> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 > Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==0 && $row['checkedIn']==0 && $row['regdesk_status']==1)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 disabled> payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1 checked disabled> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 > Acco-Status</td>";
-                            }
-                            if($row['paymentStatus']==0 && $row['checkedIn']==0 && $row['regdesk_status']==0)
-                            {
-                                echo "<td><input type='checkbox' name='payment-status' value=1 > payment-status<br>
-                                <input type='checkbox' name='regdesk-status' value=1> regdesk-status<br>
-                                 <input type='checkbox' name='acco-status' value=1 > Acco-Status</td>";
-                            }
+                            echo "<input type='checkbox' name='payment-status' value=1 > payment-status<br>";
                         }
+                        if($row['regdesk_status']=='1')
+                            {
+                                echo "<input type='checkbox' name='regdesk-status' value=1 checked> regdesk-status<br>";
+                            } 
+                        else
+                        {
+                            echo "<input type='checkbox' name='regdesk-status' value=1 > regdesk-status<br>";
+                        }
+                        if($row['alumniCardMade']=='1')
+                            {
+                                echo "<input type='checkbox' name='card-made' value=1 checked> Card-Made<br>";
+                            } 
+                        else
+                        {
+                            echo "<input type='checkbox' name='card-made' value=1 > Card-Made<br>";
+                        }
+                        if($row['alumniCardGiven']=='1')
+                            {
+                                echo "<input type='checkbox' name='card-given' value=1 checked> Card-Given<br>";
+                            } 
+                        else
+                        {
+                            echo "<input type='checkbox' name='card-given' value=1 > Card-Given<br>";
+                        }
+                        if($row['checkedIn']=='1')
+                            {
+                                echo "<input type='checkbox' name='acco-status' value=1 checked > Acco-Status";
+                            } 
+                        else
+                        {
+                            echo "<input type='checkbox' name='acco-status' value=1 > Acco-Status";
+                        }
+                         
+                        echo"</td>";
                         echo "<td>" . $row['phoneNumber'] . "</td>";
-                        echo "<td>" . $row['guestHouse'] . "</td>";
-                        if($login_session=="accodesk")
-                        {
-                            if($row['checkedIn']==1)
-                            {
-                                echo "<td><input style='width:70px;' type='text' name='room-no' value='".$row['roomNo']."' disabled><br>";
-                            }
-                            else{
-                                echo "<td><input style='width:70px;' type='text' name='room-no' value='".$row['roomNo']."' ><br>";
-                            }
-                        }
-                        else
-                        {
-                            echo "<td><input style='width:70px;' type='text' name='room-no' value='".$row['roomNo']."' disabled><br>";
-                        }
+                        echo "<td><input style='width:70px;' type='text' name='guest-house' value='".$row['guestHouse']."'></td>";
+                        echo "<td><input style='width:70px;' type='text' name='room-no' value='".$row['roomNo']."'><br>";
                         echo "<td>" . $row['email'] . "</td>";
                         echo "<td>" . $row['hall'] . "</td>";
                     echo "</form>";

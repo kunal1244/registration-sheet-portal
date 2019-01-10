@@ -20,13 +20,14 @@
         $last=$_POST['lastname'];
         $dep=$_POST['department'];
         $hall=$_POST['hall'];
+        $batch=$_POST['batch'];
         $contact=$_POST['contact'];
         $email=$_POST['email'];
         $company=$_POST['company'];
         $desig=$_POST['designation'];
 
         // $sql = "UPDATE `user` SET Amount_of_Payment='$amount', payment_status='$payment',room_no='$room',acco_status='$acco',regdesk_status='$reg', comment='$comment', Accompaniments='$accompany' WHERE id=$ids" ;
-        $sql = "INSERT INTO `users` (firstname, lastname, department,hall,phoneNumber,email,company,designation) VALUES ('$first', '$last', '$dep','$hall','$contact','$email','$company','$desig')";
+        $sql = "INSERT INTO `users` (firstname, lastname, department,hall,batch,phoneNumber,email,company,designation) VALUES ('$first', '$last', '$dep','$hall','$batch','$contact','$email','$company','$desig')";
 
         echo("<script>console.log('PHP: ".$sql."');</script>");
         if ($conn->query($sql) === TRUE) {
