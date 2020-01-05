@@ -1,9 +1,9 @@
 <?php
-    echo "<script> console.log('".$_POST."')</script>";
+// echo("<script>console.log('PHP: ".$_POST."');</script>");
     //dd($_POST);
     $servername = "localhost";
     $username = "root";
-    $password = "aj99@indori";
+    $password = "";
     $dbname = "registration";
     // echo 'dsa';
     // Create connection
@@ -22,10 +22,15 @@
         $acco=$_POST['acco-status'];
         $reg=$_POST['regdesk-status'];
         $room=$_POST['room-no'];
+        $guesthouse=$_POST['guest-house'];
         $comment=$_POST['comment'];
+        $accompany=$_POST['accompany'];
+        $cardmade=$_POST['card-made'];
+        $cardgiven=$_POST['card-given'];
 
-        $sql = "UPDATE `user` SET Amount_of_Payment='$amount', payment_status='$payment',room_no='$room',acco_status='$acco',regdesk_status='$reg', comment='$comment' WHERE id=$ids" ;
-        echo("<script>console.log('PHP: ".$sql."');</script>");
+        print_r($_POST);
+        $sql = "UPDATE `user` SET amountPaid='$amount', paymentStatus='$payment',roomNo='$room', checkedIn='$acco',guesthouse='$guesthouse', regdesk_status='$reg', comment='$comment', accompaniments='$accompany', alumniCardMade='$cardmade',alumniCardGiven='$cardgiven' WHERE id=$ids";
+        // echo("<script>console.log('PHP: ".$sql."');</script>");
         if ($conn->query($sql) === TRUE) {
             echo "Record updated successfully";
         } else {

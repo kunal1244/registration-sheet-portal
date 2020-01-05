@@ -3,8 +3,8 @@
     //dd($_POST);
     $servername = "localhost";
     $username = "root";
-    $password = "aj99@indori";
-    $dbname = "reg";
+    $password = "";
+    $dbname = "registration";
     // echo 'dsa';
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -22,7 +22,7 @@
         $reg=$_POST['regdesk-status'];
         $room=$_POST['room-no'];
         $comment=$_POST['comment'];
-        $sql = "UPDATE `user` SET Amount_of_Payment='$amount', payment_status='$payment',room_no='$room',acco_status='$acco',regdesk_status='$reg', comment='$comment' WHERE id=$ids" ;
+        $sql = "UPDATE `user` SET amount='$amount', payment_status='$payment',room='$room',acco_status='$acco',reg_status='$reg', comment='$comment' WHERE id=$ids" ;
         echo("<script>console.log('PHP: ".$sql."');</script>");
         if ($conn->query($sql) === TRUE) {
             echo "Record updated successfully";

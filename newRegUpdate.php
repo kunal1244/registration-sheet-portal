@@ -3,7 +3,7 @@
     //dd($_POST);
     $servername = "localhost";
     $username = "root";
-    $password = "aj99@indori";
+    $password = "";
     $dbname = "registration";
     // echo 'dsa';
     // Create connection
@@ -27,7 +27,7 @@
         $desig=$_POST['designation'];
 
         // $sql = "UPDATE `user` SET Amount_of_Payment='$amount', payment_status='$payment',room_no='$room',acco_status='$acco',regdesk_status='$reg', comment='$comment', Accompaniments='$accompany' WHERE id=$ids" ;
-        $sql = "INSERT INTO `users` (firstname, lastname, department,hall,batch,phoneNumber,email,company,designation) VALUES ('$first', '$last', '$dep','$hall','$batch','$contact','$email','$company','$desig')";
+        $sql = "INSERT INTO `users` (timestamp, firstname, lastname, department,hall,batch,phoneNumber,email,company,designation) VALUES ('$first', '$last', '$dep','$hall','$batch','$contact','$email','$company','$desig')";
 
         echo("<script>console.log('PHP: ".$sql."');</script>");
         if ($conn->query($sql) === TRUE) {
